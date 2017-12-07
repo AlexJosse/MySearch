@@ -43,7 +43,8 @@ int	search_in_file(char *fname, char *str)
 	return(-1);
   }
   while((read = getline(&line, &len, fp)) != -1) {
-    if(strcasestr(line, str) != NULL) {
+    while((line = strcasestr(line, str)) != NULL) {
+      line++;
       find_result++;
       match = true;
     }
